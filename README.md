@@ -8,8 +8,6 @@ MonReader is a new mobile document digitization experience for the blind, for re
 
 <img src="https://go.apziva.com/static/img/project_10_1.png"><br>
 
-MonReader is a new mobile document digitalization experience for the blind, for researchers and for everyone else in need for fully automatic, highly fast and high-quality document scanning in bulk. It is composed of a mobile app and all the user needs to do is flip pages and everything is handled by MonReader: it detects page flips from low-resolution camera preview and takes a high-resolution picture of the document, recognizing its corners and crops it accordingly, and it dewarps the cropped document to obtain a bird's eye view, sharpens the contrast between the text and the background and finally recognizes the text with formatting kept intact, being further corrected by MonReader's ML powered redactor.
-
 <img src="https://go.apziva.com/static/img/project_10_2.jpg"><br>
 
 ### <b>Data Description</b>
