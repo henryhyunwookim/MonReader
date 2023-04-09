@@ -3,7 +3,10 @@ from pathlib import Path
 from zipfile import ZipFile
 
 import pandas as pd
-
+from collections import defaultdict
+from PIL import Image
+from numpy import asarray
+from tqdm import tqdm
 
 def load_data(file_name, folder_name=None):
     parent_path = Path(os.getcwd()).parent
@@ -45,3 +48,34 @@ def extract_zip_file(file_path, download_path, file_name):
         with ZipFile(file_path, 'r') as zip_file:
             zip_file.extractall(path=download_path)
         print(f"{file_name} extracted in {download_path}.")
+
+
+def load_images(download_path, as_array=False):
+    files_dict = defaultdict(dict)
+    for f1 in os.listdir(download_path):
+        if f1 == "images":
+            print(f"Loading files in {download_path}\\{f1}")
+            for f2 in os.listdir(download_path + f"\\{f1}"): # training or testing
+                if files_dict.get(f2, "") == "":
+                    files_dict[f2] = defaultdict(dict)
+
+                print(f"Loading files in {download_path}\\{f1}\\{f2}")
+                for f3 in os.listdir(download_path + f"\\{f1}\\{f2}"): # flip or notflip
+                    if files_dict.get(f3, "") == "":
+                        files_dict[f3] = defaultdict(dict)
+                    
+                    print(f"Loading files in {download_path}\\{f1}\\{f2}\\{f3}")
+                    for f4 in tqdm(os.listdir(download_path + f"\\{f1}\\{f2}\\{f3}")):
+                        if files_dict.get(f4, "") == "":
+                            files_dict[f4] = defaultdict(dict)
+                        
+                        # Load each image file and convert it into a 3d (RGB) array.
+                        jpg_file_path = download_path + f"\\{f1}\\{f2}\\{f3}\\{f4}"
+                        image = Image.open(jpg_file_path)
+                        if as_array:
+                            image_array = asarray(image)
+                            files_dict[f2][f3][f4] = image_array
+                        else:
+                            files_dict[f2][f3][f4] = image
+
+    return files_dict
