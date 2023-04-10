@@ -4,3 +4,5 @@
 # Exclude files related to jupyter notebooks - the main notebook will be stored in the root directory.
 *.ipynb_checkpoints
 /notebooks
+
+/.vs
