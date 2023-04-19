@@ -6,3 +6,6 @@
 /notebooks
 
 /.vs
+
+# Ignore large numpy files
+*.npy
