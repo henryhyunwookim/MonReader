@@ -259,3 +259,16 @@ def get_mean_stats(xgb_train_result, xgb_train_result_updated,
     overall_mean_dict["lgbm_test_updated"] = round(lgbm_test_result_updated.mean(), 4).to_dict()
 
     return pd.DataFrame(overall_mean_dict)
+
+
+def return_result_table(results):    
+    scores_list = []
+    for result in results:
+        scores = [round(np.mean(result), 4), round(np.std(result), 4), round(np.max(result), 4), round(np.min(result), 4)]
+        scores_list.append(scores)
+
+    result_table = pd.DataFrame(scores_list,                
+                                columns=['Mean', 'Std', 'Max', 'Min'],
+                                index=['Train loss', 'Validate loss', 'Test loss', 'Train f1', 'Validate f1', 'Test f1']).T
+
+    return result_table

@@ -3,6 +3,7 @@ from pathlib import Path
 from zipfile import ZipFile
 
 import pandas as pd
+from numpy import asarray
 from collections import defaultdict
 from PIL import Image
 from numpy import asarray
@@ -79,3 +80,15 @@ def load_images(download_path, as_array=False):
                             files_dict[f2][f3][f4] = image
 
     return files_dict
+
+
+def get_image_shape(array_dict):
+    image_shape = None
+    for k, v in array_dict.items():
+        for k2, v2 in v.items():
+            for k3, v3 in v2.items():
+                while image_shape == None:
+                    image_array = asarray(v3)
+                    image_shape = image_array.shape
+                    print(f"Image shape: {image_shape}")
+    return image_shape

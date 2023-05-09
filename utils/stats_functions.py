@@ -7,6 +7,8 @@ import seaborn as sns
 from scipy import stats
 from scipy.stats import ttest_1samp
 
+from keras import backend as K
+
 
 def run_chi_tests(data, target, significance_level,
                   plot_title=None, plot_title_y=None,
@@ -146,3 +148,15 @@ def hypothesis_test(values, target, alpha, model, figsize):
     ax.set_title(type(model).__name__)
     ax.set_xlabel("Accuracy Score")
     ax.set_xbound(0, 1)
+
+
+def f1_score(y_true, y_pred):
+    y_true = K.round(y_true)
+    y_pred = K.round(y_pred)
+    tp = K.sum(y_true * y_pred)
+    fp = K.sum((1 - y_true) * y_pred)
+    fn = K.sum(y_true * (1 - y_pred))
+    precision = tp / (tp + fp + K.epsilon())
+    recall = tp / (tp + fn + K.epsilon())
+    f1_score = 2 * precision * recall / (precision + recall + K.epsilon())
+    return f1_score
