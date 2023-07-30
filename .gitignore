@@ -9,3 +9,9 @@
 
 # Ignore large numpy files
 *.npy
+
+# Ignore pycache files
+/utils/__pycache__/
+__pycache__/
+*.py[cod]
+*pyc
