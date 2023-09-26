@@ -25,7 +25,19 @@ We clipped the videos as short videos and labelled them as flipping or not flipp
 ### <b>Other Objective</b>
 - Predict if a given sequence of images contains an action of flipping.
 
+### <b> Results</b>
+
+<u>Model Performance</u>
+
+We designed a convolutional neural network (CNN) specifically for a binary classification task, aiming to detect page-flipping actions. Our approach involved extensive experimentation and analysis, exploring a range of input shapes, filter counts, kernel sizes, pooling strategies, and more. These efforts led to an outstanding f1 score of 0.9832 on the test dataset. Notably, our model had the advantage of being trained on a substantial volume of high-resolution image data, comprising over two thousand video frames. This rich dataset significantly contributed to enhancing the model's accuracy and robustness.
+
+<u>Future Work</u>
+
+While the current iteration of our model is sufficiently accurate for deployment in a production environment, further enhancements can be achieved by integrating more diverse image data. Additionally, the knowledge and insights gained from this project can be leveraged to extend the model's capabilities, enabling the detection of various objects or motions using video frames or any image data.
+
 ### <b>Notebook and Installation</b>
+
+For more details, you may refer to <a href='https://github.com/henryhyunwookim/MonReader/blob/main/MonReader.ipynb'>this notebook</a> directly.
 
 To run MonReader.ipynb locally, please clone or fork this repo and install the required packages by running the following command:
 
