@@ -43,4 +43,4 @@ To run MonReader.ipynb locally, please clone or fork this repo and install the r
 
 pip install -r requirements.txt
 
-##### Source: Apziva
+##### <i>* Associated with Apziva</i>
